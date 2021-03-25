@@ -1,13 +1,17 @@
 package com.example.todoapp;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
 @Entity(tableName = "todo")
 public class Task {
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
     private Long id;
     private String title;
     private String description;
