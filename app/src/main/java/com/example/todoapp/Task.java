@@ -14,8 +14,9 @@ public class Task {
     @ColumnInfo(name = "created_date")
     private Date createdDate;
     @ColumnInfo(name = "updated_date")
-    private int priority;
     private Date updatedDate;
+    private int priority;
+
 
     public Task(String title, String description, Date createdDate, Date updatedDate, int priority) {
         this.title = title;
