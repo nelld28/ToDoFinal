@@ -19,7 +19,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     }
 
-    public void setDate(List<Task> data){
+    public void setData(List<Task> data){
         taskList = data;
         notifyDataSetChanged();
     }

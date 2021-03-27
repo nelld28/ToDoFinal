@@ -1,6 +1,9 @@
 package com.example.todoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -18,10 +21,11 @@ public class MainActivity extends AppCompatActivity {
 
     public static String TAG = MainActivity.class.getSimpleName();
     private RecyclerView recyclerView;
-    private Repository repository;
+    //private Repository repository;
     private List<Task> taskList;
     private TaskAdapter adapter;
     private FloatingActionButton fab;
+    private MainViewModel viewModel;
 
 
     @Override
@@ -32,11 +36,21 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.task_list);
         fab = findViewById(R.id.floatingActionButton);
 
-        repository = Repository.getRepository(this.getApplication());
-        taskList = repository.getAllTask();
+        viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+
+        //repository = Repository.getRepository(this.getApplication());
+        //taskList = repository.getAllTask();
         adapter = new TaskAdapter();
-        adapter.setDate(taskList);
+        //adapter.setDate(taskList);
         recyclerView.setAdapter(adapter);
+
+        viewModel.getAllTasks().observe(this, new Observer<List<Task>>() {
+            @Override
+            public void onChanged(List<Task> tasks) {
+                if(tasks != null)
+                    adapter.setData(taskList);
+            }
+        });
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,10 +62,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        taskList = repository.getAllTask();
-        adapter.setDate(taskList);
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        taskList = repository.getAllTask();
+//        adapter.setDate(taskList);
+//    }
 }

@@ -1,5 +1,6 @@
 package com.example.todoapp;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -13,7 +14,7 @@ import java.util.List;
 public interface TodoDao {
 
     @Query("select * from todo order by priority")
-    List<Task> getAllTasks();
+    LiveData<List<Task>> getAllTasks();
 
     @Delete
     void delete(Task task);
