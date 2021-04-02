@@ -34,9 +34,11 @@
 
 
 References:
-         https://github.com/binay-shah/todo_sec_a.git
-         StackOverFlow
-         Youtube
-         TutorialPoint
-         Android Developer
-         ebbi
+<ul>
+    <li>     https://github.com/binay-shah/todo_sec_a.git
+    <li>     StackOverFlow</li>
+    <li>     Youtube</li>
+    <li>    TutorialPoint</li>
+    <li>     Android Developer</li>
+       <li>     ebbi</li>
+       </ul>
